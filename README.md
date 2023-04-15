@@ -1,4 +1,4 @@
-# Jitu Readmes
+# Water bills
 
 ### Write a program that calculates monthly water bill.
 
