@@ -11,10 +11,11 @@
 
 <body>
     <div class="container">
-        <h1>Water Bill Project</h1>
+        <h1>Water Billing</h1>
 
         <form action="" method="post">
-            <input type="text" name="units">
+
+            <input type="number" name="units" placeholder="Enter the number of units">
             <button type="submit">GET BILL</button>
         </form>
     </div>
