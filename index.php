@@ -16,8 +16,20 @@
         <form action="" method="post">
 
             <input type="number" name="units" placeholder="Enter the number of units">
-            <button type="submit">GET BILL</button>
+            <button name="submit" type="submit">GET BILL</button>
         </form>
+
+        <?php
+        if(isset($_POST['submit'])) {
+            include 'calculate.php';
+            if(isset($bill) && isset($units)){
+                echo "<p>Your monthly water bill for $units units is Ksh. $bill</p>";
+            }else{
+                echo "<p>Please try again </p>";
+            }
+        }
+        ?>
+
     </div>
 </body>
 
