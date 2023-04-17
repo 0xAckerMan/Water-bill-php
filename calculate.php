@@ -1,20 +1,29 @@
 <?php
     if(isset($_POST['submit'])) {
         $units = $_POST['units'];
-        $rates = array(
-            0 => 35,
-            20 => 40,
-            49 => 45,
-            100 => 50
-        );
-        $rate = 0;
-        $bill = 0;
-        foreach($rates as $range => $value) {
-            if($units <= $range) {
-                $rate = $value;
-                break;
+        function get_bill($u){
+            $rates = array(
+                20 => 35,
+                49 => 40,
+                100 => 45,
+            );
+            $rate = 0;
+
+            $matched = false;
+
+            foreach($rates as $range => $value) {
+                if($u <= $range) {
+                    $rate = $value;
+                    $matched = true;
+                    break;
+                }
             }
+            if (!$matched){
+                return $u * 50;
+            }
+            return $u * $rate;
         }
-        $bill = $units * $rate;
+
+        $bill = get_bill($units);
     }
 ?>
