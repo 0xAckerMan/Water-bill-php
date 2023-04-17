@@ -13,20 +13,21 @@
     <div class="container">
         <h1>Water Billing</h1>
 
-        <form action="" method="post">
+        <?php
+        include "bill.php";
+        if (isset($_GET['error'])) {
+            echo "<p class='error'>Invalid Input</p>";
+        }
+        ?>
 
-            <input type="number" name="units" placeholder="Enter the number of units">
-            <button name="submit" type="submit">GET BILL</button>
+        <form action="bill.php" method="post">
+            <input type="number" name="units" placeholder="Enter the number of units" />
+            <input name="submit" type="submit" value="GET BILL" />
         </form>
 
         <?php
-        if(isset($_POST['submit'])) {
-            include 'calculate.php';
-            if(isset($bill) && isset($units)){
-                echo "<p>Your monthly water bill for $units units is Ksh. $bill</p>";
-            }else{
-                echo "<p>Please try again </p>";
-            }
+        if (isset($_GET['bill']) && isset($_GET['units'])) {
+            echo "<p class='success'>Your water bill for {$_GET['units']} units is Ksh {$_GET['bill']}</p>";
         }
         ?>
 
